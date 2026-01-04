@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 # CONFIGURATION - YOUR RAILWAY URL
 # ═══════════════════════════════════════════════════════════════════════════════
 
-PORTAL_URL = "https://web-production-2dc4.up.railway.app"
+PORTAL_URL = "https://web-production-2dc4.up.railway.app/"
 
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -272,7 +272,7 @@ class WebPortal(commands.Cog):
 
         embed.add_field(
             name="🌐 Portal URL",
-            value=f"[{PORTAL_URL}]({PORTAL_URL})",
+            value=f"[{PORTAL_URL}]",
             inline=False
         )
         
