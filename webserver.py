@@ -45,45 +45,46 @@ except ImportError:
         try:
             # For Railway deployment - direct MySQL connection
             import mysql.connector
-            from mysql.connector import pooling
             
             class DatabaseManager:
                 """Minimal database manager for standalone deployment."""
                 
                 def __init__(self):
                     self.pool = None
-                    self._connect()
-                
-                def _connect(self):
-                    """Create database connection pool."""
-                    db_config = {
+                    self.db_config = {
                         'host': os.environ.get('MYSQL_HOST', 'localhost'),
                         'port': int(os.environ.get('MYSQL_PORT', 3306)),
                         'user': os.environ.get('MYSQL_USER', 'root'),
                         'password': os.environ.get('MYSQL_PASSWORD', ''),
                         'database': os.environ.get('MYSQL_DATABASE', 'camphalfblood'),
                     }
-                    
+                    # Don't connect on init - connect lazily
+                    logger.info(f"Database configured for {self.db_config['host']}:{self.db_config['port']}")
+                
+                def _get_connection(self):
+                    """Get a database connection (lazy connect)."""
                     try:
-                        self.pool = pooling.MySQLConnectionPool(
-                            pool_name="chb_pool",
-                            pool_size=5,
-                            **db_config
+                        conn = mysql.connector.connect(
+                            host=self.db_config['host'],
+                            port=self.db_config['port'],
+                            user=self.db_config['user'],
+                            password=self.db_config['password'],
+                            database=self.db_config['database'],
+                            connection_timeout=10
                         )
-                        logger.info(f"Connected to MySQL at {db_config['host']}:{db_config['port']}")
+                        return conn
                     except Exception as e:
                         logger.error(f"Failed to connect to MySQL: {e}")
-                        self.pool = None
+                        return None
                 
                 def _execute(self, query, params=None, fetch_one=False, fetch_all=False):
                     """Execute a query and optionally fetch results."""
-                    if not self.pool:
-                        return None
-                    
                     conn = None
                     cursor = None
                     try:
-                        conn = self.pool.get_connection()
+                        conn = self._get_connection()
+                        if not conn:
+                            return None
                         cursor = conn.cursor(dictionary=True)
                         cursor.execute(query, params or ())
                         
@@ -443,11 +444,22 @@ class CampHalfBloodServer:
         raise web.HTTPNotFound()
 
     async def _handle_health(self, request: web.Request) -> web.Response:
-        """Health check endpoint."""
+        """Health check endpoint - always return healthy if server is running."""
+        db_status = 'configured'
+        if db:
+            try:
+                # Quick test query
+                result = db._execute("SELECT 1", fetch_one=True)
+                db_status = 'connected' if result else 'error'
+            except:
+                db_status = 'error'
+        else:
+            db_status = 'not configured'
+            
         return web.json_response({
             'status': 'healthy',
             'service': 'Camp Half-Blood Portal',
-            'database': 'connected' if db else 'disconnected'
+            'database': db_status
         })
 
     async def _handle_status(self, request: web.Request) -> web.Response:
@@ -798,11 +810,15 @@ or in a <code>static/</code> subdirectory.
 
     async def start(self):
         """Start the server."""
+        print(f"Setting up routes...")
         self._setup_routes()
+        print(f"Starting web runner...")
         self.runner = web.AppRunner(self.app)
         await self.runner.setup()
+        print(f"Binding to {self.host}:{self.port}...")
         self.site = web.TCPSite(self.runner, self.host, self.port)
         await self.site.start()
+        print(f"✅ Server running at http://{self.host}:{self.port}")
         logger.info(f"⚡ Camp Half-Blood Portal started at http://{self.host}:{self.port}")
 
     async def stop(self):
@@ -839,22 +855,36 @@ if __name__ == '__main__':
     parser.add_argument('--static', default=None, help='Static files directory')
     args = parser.parse_args()
 
+    # Get port from environment (Railway sets this)
+    port = args.port or int(os.environ.get('PORT', 8080))
+    
+    print("=" * 50)
+    print("⚡ Camp Half-Blood Web Portal ⚡")
+    print("=" * 50)
+    print(f"Starting server on 0.0.0.0:{port}")
+    print(f"Database host: {os.environ.get('MYSQL_HOST', 'not set')}")
+    print("=" * 50)
+
     async def main():
         srv = CampHalfBloodServer(
-            host=args.host,
-            port=args.port,
+            host='0.0.0.0',
+            port=port,
             static_dir=args.static
         )
         await srv.start()
-
+        
+        # Keep running
         try:
             while True:
                 await asyncio.sleep(3600)
-        except KeyboardInterrupt:
+        except (KeyboardInterrupt, asyncio.CancelledError):
             await srv.stop()
 
-    print("⚡ Camp Half-Blood Web Portal ⚡")
-    print(f"Starting server...")
-    print("Press Ctrl+C to stop\n")
-
-    asyncio.run(main())
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\nServer stopped.")
+    except Exception as e:
+        print(f"Error starting server: {e}")
+        import traceback
+        traceback.print_exc()
