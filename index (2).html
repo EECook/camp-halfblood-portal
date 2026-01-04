@@ -1,0 +1,2920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camp Half-Blood | Demigod Sanctuary</title>
+    <meta name="description" content="Welcome to Camp Half-Blood - Train with heroes, discover your godly parent, and embark on legendary quests.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ══════════════════════════════════════════════════════════════════════════════
+           CSS CUSTOM PROPERTIES - THE OLYMPIAN PALETTE
+           ══════════════════════════════════════════════════════════════════════════════ */
+        :root {
+            /* Golds & Bronzes - Divine Metals */
+            --gold: #D4AF37;
+            --gold-bright: #FFD700;
+            --gold-light: #F4E4A1;
+            --gold-pale: #FFF8DC;
+            --gold-dark: #8B7355;
+            --bronze: #CD7F32;
+            --celestial-bronze: #B87333;
+            --ichor: #FFD93D;
+            
+            /* Night Sky - Olympus at Dusk */
+            --night-deepest: #050508;
+            --night-deep: #0a0a12;
+            --night-medium: #12121f;
+            --night-light: #1a1a2e;
+            --night-lighter: #252540;
+            
+            /* Elemental Colors - The Gods' Domains */
+            --zeus-lightning: #4FC3F7;
+            --zeus-sky: #87CEEB;
+            --poseidon-sea: #20B2AA;
+            --poseidon-deep: #006994;
+            --poseidon-foam: #7FFFD4;
+            --hades-purple: #6B4C9A;
+            --hades-shadow: #2D1B4E;
+            --ares-blood: #DC143C;
+            --ares-fire: #FF4500;
+            --apollo-sun: #FFD700;
+            --apollo-warm: #FFA500;
+            --artemis-silver: #C0C0C0;
+            --artemis-moon: #F5F5F5;
+            --aphrodite-pink: #FF69B4;
+            --aphrodite-rose: #FFB6C1;
+            --athena-grey: #708090;
+            --athena-wisdom: #B8B8D1;
+            --hephaestus-fire: #FF6B35;
+            --hephaestus-forge: #8B4513;
+            --hermes-blue: #4169E1;
+            --demeter-green: #90EE90;
+            --demeter-earth: #8B4513;
+            --dionysus-grape: #8B008B;
+            --dionysus-wine: #722F37;
+            --hera-royal: #4B0082;
+            --hecate-mystic: #9370DB;
+            --hypnos-dream: #E6E6FA;
+            --nike-victory: #FFD700;
+            --nemesis-balance: #808080;
+            --iris-rainbow: linear-gradient(90deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #4B0082, #8F00FF);
+            --tyche-luck: #50C878;
+            
+            /* Parchment & Marble */
+            --parchment: #F4E4BC;
+            --parchment-dark: #D4C49C;
+            --parchment-aged: #C4A77D;
+            --marble: #F5F5F0;
+            --marble-veined: #E8E8E0;
+            --marble-shadow: #D0D0C8;
+            
+            /* Text */
+            --text-light: #F5F5F0;
+            --text-muted: #A0A0A0;
+            --text-gold: #D4AF37;
+            --text-dark: #1A1A1A;
+            
+            /* Status Colors */
+            --success: #4ADE80;
+            --success-dark: #22C55E;
+            --warning: #FBBF24;
+            --warning-dark: #F59E0B;
+            --error: #F87171;
+            --error-dark: #EF4444;
+            --info: #60A5FA;
+            
+            /* Shadows & Effects */
+            --shadow-gold: 0 0 30px rgba(212, 175, 55, 0.3);
+            --shadow-gold-intense: 0 0 60px rgba(212, 175, 55, 0.5);
+            --shadow-lightning: 0 0 30px rgba(79, 195, 247, 0.4);
+            --shadow-dark: 0 10px 40px rgba(0, 0, 0, 0.5);
+            --glow-gold: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+            --glow-lightning: drop-shadow(0 0 10px rgba(79, 195, 247, 0.5));
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            --transition-bounce: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            
+            /* Spacing */
+            --section-padding: 2rem;
+            --card-padding: 1.5rem;
+            --border-radius: 12px;
+            --border-radius-lg: 20px;
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════════════
+           RESET & BASE STYLES
+           ══════════════════════════════════════════════════════════════════════════════ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'EB Garamond', 'Cormorant Garamond', Georgia, serif;
+            background: var(--night-deepest);
+            color: var(--text-light);
+            min-height: 100vh;
+            line-height: 1.7;
+            font-size: 1.125rem;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Custom Selection */
+        ::selection {
+            background: var(--gold);
+            color: var(--night-deep);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--night-deep);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--gold-dark) 0%, var(--bronze) 100%);
+            border-radius: 6px;
+            border: 2px solid var(--night-deep);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--gold) 0%, var(--bronze) 100%);
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════════════
+           ANIMATED BACKGROUND - THE COSMOS
+           ══════════════════════════════════════════════════════════════════════════════ */
+        #cosmos-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(ellipse at center bottom, var(--night-light) 0%, var(--night-deep) 40%, var(--night-deepest) 100%);
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite;
+            animation-delay: var(--delay);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: var(--min-opacity); transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+            animation: shoot 3s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes shoot {
+            0% { transform: translateX(-100px) translateY(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateX(calc(100vw + 100px)) translateY(200px); opacity: 0; }
+        }
+
+        .constellation {
+            position: absolute;
+            opacity: 0.15;
+            font-size: 120px;
+            color: var(--gold);
+            animation: constellationFloat 30s ease-in-out infinite;
+        }
+
+        @keyframes constellationFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Floating Greek Letters */
+        .greek-float {
+            position: absolute;
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            opacity: 0.08;
+            animation: floatGreek 25s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes floatGreek {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-30px) rotate(5deg); }
+            75% { transform: translateY(30px) rotate(-5deg); }
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════════════
+           HEADER - GATES OF OLYMPUS
+           ══════════════════════════════════════════════════════════════════════════════ */
+        .site-header {
+            position: relative;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, 
+                rgba(212, 175, 55, 0.12) 0%, 
+                rgba(212, 175, 55, 0.05) 30%,
+                transparent 100%
+            );
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--gold-dark) 20%, 
+                var(--gold) 50%, 
+                var(--gold-dark) 80%, 
+                transparent 100%
+            ) 1;
+            overflow: hidden;
+        }
+
+        /* Decorative columns */
+        .header-column {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 80px;
+            background: linear-gradient(90deg, 
+                rgba(212, 175, 55, 0.08) 0%,
+                rgba(212, 175, 55, 0.03) 50%,
+                transparent 100%
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: var(--gold);
+            opacity: 0.2;
+        }
+
+        .header-column.left { left: 0; }
+        .header-column.right { 
+            right: 0; 
+            background: linear-gradient(-90deg, 
+                rgba(212, 175, 55, 0.08) 0%,
+                rgba(212, 175, 55, 0.03) 50%,
+                transparent 100%
+            );
+        }
+
+        .site-logo {
+            position: relative;
+            display: inline-block;
+        }
+
+        .logo-text {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            background: linear-gradient(135deg, 
+                var(--gold-light) 0%, 
+                var(--gold) 25%, 
+                var(--gold-bright) 50%, 
+                var(--gold) 75%, 
+                var(--bronze) 100%
+            );
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmerGold 4s ease-in-out infinite;
+            text-shadow: none;
+            filter: var(--glow-gold);
+        }
+
+        @keyframes shimmerGold {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .logo-lightning {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: var(--zeus-lightning);
+            animation: lightningPulse 2s ease-in-out infinite;
+            filter: var(--glow-lightning);
+        }
+
+        .logo-lightning.left { left: -3rem; }
+        .logo-lightning.right { right: -3rem; }
+
+        @keyframes lightningPulse {
+            0%, 100% { opacity: 0.6; transform: translateY(-50%) scale(1); }
+            50% { opacity: 1; transform: translateY(-50%) scale(1.1); }
+        }
+
+        .site-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.4rem;
+            color: var(--gold-light);
+            margin-top: 0.5rem;
+            letter-spacing: 0.15em;
+            opacity: 0.9;
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════════════
+           NAVIGATION - OLYMPIAN COMPASS
+           ══════════════════════════════════════════════════════════════════════════════ */
+        .main-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 18, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 0.5rem 0;
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-btn {
+            position: relative;
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--marble-veined);
+            padding: 0.75rem 1.25rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-medium);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .nav-btn:hover::before {
+            left: 100%;
+        }
+
+        .nav-btn:hover {
+            color: var(--gold);
+            border-color: var(--gold-dark);
+            background: rgba(212, 175, 55, 0.08);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--bronze) 100%);
+            color: var(--night-deep);
+            font-weight: 600;
+            border: none;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .nav-btn .nav-icon {
+            margin-right: 0.5rem;
+            font-size: 1.1em;
+        }
+
+        .nav-btn.portal-btn {
+            background: linear-gradient(135deg, rgba(79, 195, 247, 0.15) 0%, rgba(79, 195, 247, 0.05) 100%);
+            border-color: var(--zeus-lightning);
+            color: var(--zeus-lightning);
+        }
+
+        .nav-btn.portal-btn:hover,
+        .nav-btn.portal-btn.active {
+            background: linear-gradient(135deg, var(--zeus-lightning) 0%, var(--poseidon-sea) 100%);
+            color: var(--night-deep);
+            box-shadow: var(--shadow-lightning);
+        }
+
+        /* User indicator when logged in */
+        .user-indicator {
+            display: none;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 1rem;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold-dark);
+            border-radius: 25px;
+            margin-left: 1rem;
+        }
+
+        .user-indicator.visible {
+            display: flex;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .user-name {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            color: var(--gold-light);
+        }
+
+        .user-drachma {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.85rem;
+            color: var(--gold);
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════════════
+           MAIN CONTENT AREA
+           ══════════════════════════════════════════════════════════════════════════════ */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: calc(100vh - 200px);
+        }
+
+        /* Page Sections */
+        .page-section {
+            display: none;
+            animation: pageEnter 0.5s ease-out;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes pageEnter {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Content Cards */
+        .content-card {
+            background: linear-gradient(145deg, 
+                rgba(26, 26, 46, 0.9) 0%, 
+                rgba(18, 18, 31, 0.95) 100%
+            );
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: var(--border-radius-lg);
+            padding: var(--section-padding);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-dark);
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--gold-dark) 20%, 
+                var(--gold) 50%, 
+                var(--gold-dark) 80%, 
+                transparent 100%
+            );
+            opacity: 0.5;
+        }
+
+        /* Decorative flourishes */
+        .flourish {
+            position: absolute;
+            color: var(--gold);
+            opacity: 0.2;
+            font-size: 1.5rem;
+        }
+
+        .flourish.top-left { top: 0.75rem; left: 1rem; }
+        .flourish.top-right { top: 0.75rem; right: 1rem; transform: scaleX(-1); }
+        .flourish.bottom-left { bottom: 0.75rem; left: 1rem; transform: scaleY(-1); }
+        .flourish.bottom-right { bottom: 0.75rem; right: 1rem; transform: scale(-1); }
+
+        /* Section Titles */
+        .section-title {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.75rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .section-title .title-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Subsection titles */
+        h3 {
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            color: var(--gold-light);
+            font-size: 1.3rem;
+            margin: 2rem 0 1rem;
+        }
+
+        h4 {
+            font-family: 'Cinzel', serif;
+            font-weight: 500;
+            color: var(--zeus-lightning);
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        /* Paragraphs */
+        p {
+            margin-bottom: 1rem;
+            color: var(--marble-veined);
+            line-height: 1.8;
+        }
+
+        /* Links */
+        a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        a:hover {
+            color: var(--gold-light);
+        }
+
+        /* Code */
+        code {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.9em;
+            background: rgba(79, 195, 247, 0.12);
+            color: var(--zeus-lightning);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            border: 1px solid rgba(79, 195, 247, 0.2);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 1rem 0 1rem 1.5rem;
+            color: var(--marble-veined);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        li::marker {
+            color: var(--gold);
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════════════
+           BUTTONS
+           ══════════════════════════════════════════════════════════════════════════════ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all var(--transition-bounce);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--bronze) 100%);
+            color: var(--night-deep);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: var(--night-deep);
+        }
+
+        .btn-lightning {
+            background: linear-gradient(135deg, var(--zeus-lightning) 0%, var(--poseidon-sea) 100%);
+            color: var(--night-deep);
+            box-shadow: 0 4px 20px rgba(79, 195, 247, 0.3);
+        }
+
+        .btn-lightning:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(79, 195, 247, 0.5);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, var(--error) 0%, var(--error-dark) 100%);
+            color: white;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════════════
+           FORM ELEMENTS
+           ══════════════════════════════════════════════════════════════════════════════ */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            font-family: 'EB Garamond', serif;
+            font-size: 1.1rem;
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            color: var(--text-light);
+            transition: all var(--transition-medium);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+
+        /* Code input (for link codes) */
+        .code-input {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 2rem;
+            text-align: center;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: var(--zeus-lightning);
+            max-width: 300px;
+        }
+
+        /* Select dropdowns */
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.25rem;
+            padding-right: 3rem;
+        }
+
+        /* Textarea */
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════════════
+           FEATURE GRID
+           ══════════════════════════════════════════════════════════════════════════════ */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(145deg, 
+                rgba(212, 175, 55, 0.05) 0%, 
+                rgba(0, 0, 0, 0.3) 100%
+            );
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            border-radius: var(--border-radius);
+            padding: var(--card-padding);
+            transition: all var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--bronze), var(--gold));
+            transform: scaleX(0);
+            transition: transform var(--transition-medium);
+        }
+
+        .feature-card:hover {
+            border-color: var(--gold-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-card h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            margin: 0 0 0.75rem 0;
+            font-size: 1.15rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════════════
+           COMMAND BOXES
+           ══════════════════════════════════════════════════════════════════════════════ */
+        .command-box {
+            background: rgba(0, 0, 0, 0.4);
+            border-left: 4px solid var(--gold);
+            border-radius: 0 8px 8px 0;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+        }
+
+        .command-name {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 1.1rem;
+            color: var(--zeus-lightning);
+            font-weight: 500;
+        }
+
+        .command-aliases {
+            font-size: 0.85rem;
+            color: var(--gold-dark);
+            margin-top: 0.25rem;
+        }
+
+        .command-desc {
+            font-size: 0.95rem;
+            color: var(--marble-veined);
+            margin-top: 0.5rem;
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════════════
+           TABLES
+           ══════════════════════════════════════════════════════════════════════════════ */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: var(--border-radius);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--bronze) 100%);
+            color: var(--night-deep);
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            text-align: left;
+            padding: 1rem;
+        }
+
+        td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            color: var(--marble-veined);
+        }
+
+        tr:hover td {
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════════════
+           INFO BOXES
+           ══════════════════════════════════════════════════════════════════════════════ */
+        .info-box {
+            padding: 1.25rem 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+        .info-box-title {
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        .info-box p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .info-box.tip {
+            background: linear-gradient(145deg, rgba(74, 222, 128, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
+            border: 1px solid rgba(74, 222, 128, 0.3);
+        }
+
+        .info-box.tip .info-box-title { color: var(--success); }
+
+        .info-box.warning {
+            background: linear-gradient(145deg, rgba(251, 191, 36, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .info-box.warning .info-box-title { color: var(--warning); }
+
+        .info-box.danger {
+            background: linear-gradient(145deg, rgba(248, 113, 113, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
+            border: 1px solid rgba(248, 113, 113, 0.3);
+        }
+
+        .info-box.danger .info-box-title { color: var(--error); }
+
+        .info-box.divine {
+            background: linear-gradient(145deg, rgba(212, 175, 55, 0.1) 0%, rgba(0, 0, 0, 0.2) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .info-box.divine .info-box-title { color: var(--gold); }
+
+        /* ══════════════════════════════════════════════════════════════════════════════
+           LOADING STATES
+           ══════════════════════════════════════════════════════════════════════════════ */
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            color: var(--gold-dark);
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(212, 175, 55, 0.2);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Empty states */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+        }
+
+        .empty-state-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.4;
+            filter: grayscale(50%);
+        }
+
+        .empty-state h3 {
+            color: var(--gold-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════════════
+           MODAL
+           ══════════════════════════════════════════════════════════════════════════════ */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-medium);
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: linear-gradient(145deg, 
+                rgba(30, 30, 50, 0.98) 0%, 
+                rgba(20, 20, 35, 0.99) 100%
+            );
+            border: 2px solid var(--gold);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            transform: scale(0.9) translateY(20px);
+            transition: transform var(--transition-bounce);
+            position: relative;
+            box-shadow: var(--shadow-gold-intense);
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .modal-title {
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--marble-veined);
+            font-size: 1.75rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all var(--transition-fast);
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: var(--error);
+            background: rgba(248, 113, 113, 0.1);
+        }
+
+        .modal-body {
+            color: var(--marble);
+            line-height: 1.8;
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════════════
+           FOOTER
+           ══════════════════════════════════════════════════════════════════════════════ */
+        .site-footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--gold-dark);
+            background: linear-gradient(180deg, transparent 0%, rgba(212, 175, 55, 0.03) 100%);
+        }
+
+        .footer-symbol {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            opacity: 0.4;
+            letter-spacing: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--gold-dark);
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ══════════════════════════════════════════════════════════════════════════════
+           RESPONSIVE DESIGN
+           ══════════════════════════════════════════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .nav-container {
+                gap: 0.125rem;
+            }
+
+            .nav-btn {
+                padding: 0.625rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .user-indicator {
+                margin-left: 0;
+                margin-top: 0.5rem;
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            html {
+                font-size: 15px;
+            }
+
+            .site-header {
+                padding: 2rem 1rem 1.5rem;
+            }
+
+            .header-column {
+                display: none;
+            }
+
+            .logo-lightning {
+                display: none;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+
+            .content-card {
+                padding: 1.25rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-btn {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.8rem;
+            }
+
+            .nav-btn .nav-icon {
+                margin-right: 0.25rem;
+            }
+
+            .btn {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Utility classes */
+        .hidden { display: none !important; }
+        .text-center { text-align: center; }
+        .text-gold { color: var(--gold); }
+        .text-lightning { color: var(--zeus-lightning); }
+        .text-success { color: var(--success); }
+        .text-warning { color: var(--warning); }
+        .text-error { color: var(--error); }
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+    </style>
+</head>
+<body>
+    <!-- Cosmic Background -->
+    <div id="cosmos-bg"></div>
+
+    <!-- Main Site Header -->
+    <header class="site-header">
+        <div class="header-column left">🏛️</div>
+        <div class="header-column right">🏛️</div>
+        
+        <div class="site-logo">
+            <span class="logo-lightning left">⚡</span>
+            <h1 class="logo-text">Camp Half-Blood</h1>
+            <span class="logo-lightning right">⚡</span>
+        </div>
+        <p class="site-tagline">Where Heroes Are Forged</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <button class="nav-btn active" data-page="home">
+                <span class="nav-icon">🏕️</span>Home
+            </button>
+            <button class="nav-btn" data-page="gods">
+                <span class="nav-icon">🏛️</span>The Gods
+            </button>
+            <button class="nav-btn" data-page="commands">
+                <span class="nav-icon">📜</span>Commands
+            </button>
+            <button class="nav-btn" data-page="games">
+                <span class="nav-icon">🎮</span>Games
+            </button>
+            <button class="nav-btn" data-page="minecraft">
+                <span class="nav-icon">⛏️</span>Minecraft
+            </button>
+            <button class="nav-btn portal-btn" data-page="portal">
+                <span class="nav-icon">🌟</span>My Portal
+            </button>
+            
+            <!-- User indicator (shown when logged in) -->
+            <div class="user-indicator" id="userIndicator">
+                <div class="user-avatar" id="userAvatar">⚡</div>
+                <span class="user-name" id="userName">Demigod</span>
+                <span class="user-drachma" id="userDrachma">0 💰</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- ══════════════════════════════════════════════════════════════════════════════
+             HOME PAGE
+             ══════════════════════════════════════════════════════════════════════════════ -->
+        <section id="page-home" class="page-section active">
+            <div class="content-card">
+                <span class="flourish top-left">❧</span>
+                <span class="flourish top-right">❧</span>
+                
+                <h2 class="section-title">
+                    <span class="title-icon">🏕️</span>
+                    Welcome to Camp Half-Blood
+                </h2>
+                
+                <p>Welcome, demigod! You've found the gateway to Camp Half-Blood — the only safe haven for children of the Greek gods. Here, you'll discover your divine heritage, train alongside heroes, and embark on legendary quests.</p>
+                
+                <p>This sanctuary bridges both <strong>Discord</strong> and <strong>Minecraft</strong>, creating an interconnected world where your deeds in one realm echo through the other. Earn Drachma, the currency of the gods, and use it to acquire powerful items, establish your own shop, and rise through the ranks of legendary heroes.</p>
+                
+                <div class="info-box divine">
+                    <div class="info-box-title">💡 Begin Your Journey</div>
+                    <p>Use <code>!profile</code> on Discord to create your demigod profile and receive 100 starting Drachma. Then take the claiming quiz with <code>!claim</code> to discover your godly parent!</p>
+                </div>
+                
+                <h3>Your First Steps at Camp</h3>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <span class="feature-card-icon">👤</span>
+                        <h4>1. Create Your Profile</h4>
+                        <p>Use <code>!profile</code> to establish your demigod identity and receive your starting Drachma.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-card-icon">🏛️</span>
+                        <h4>2. Discover Your Heritage</h4>
+                        <p>Take the claiming quiz with <code>!claim</code> to reveal which Olympian god is your parent.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-card-icon">⛏️</span>
+                        <h4>3. Link Minecraft</h4>
+                        <p>Use <code>!mclink YourName</code> to connect your accounts for cross-platform rewards.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-card-icon">🏕️</span>
+                        <h4>4. Join a Cabin</h4>
+                        <p>Browse cabins with <code>!cabin list</code> or create your own team of demigods.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-card-icon">🎮</span>
+                        <h4>5. Play Mini-Games</h4>
+                        <p>Earn Drachma through 10 mythology-themed games using <code>!games</code>.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-card-icon">🌟</span>
+                        <h4>6. Access the Portal</h4>
+                        <p>Link your account to this website for exclusive features and immersive experiences!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-card">
+                <h2 class="section-title">
+                    <span class="title-icon">✨</span>
+                    Camp Features
+                </h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <span class="feature-card-icon">🎭</span>
+                        <h4>God Parent System</h4>
+                        <p>Discover your divine heritage through an immersive Sorting Hat-style quiz. Choose from 20 different Olympian and minor gods!</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-card-icon">🏕️</span>
+                        <h4>Cabin Teams</h4>
+                        <p>Form alliances with fellow demigods. Earn Divine Favor for your cabin and compete for glory.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-card-icon">💰</span>
+                        <h4>Drachma Economy</h4>
+                        <p>Earn golden Drachma through games, quests, and events. Spend it in shops for real Minecraft items!</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-card-icon">🔗</span>
+                        <h4>Cross-Platform Sync</h4>
+                        <p>Your progress, currency, and items sync seamlessly between Discord and Minecraft.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-card-icon">📜</span>
+                        <h4>Quest System</h4>
+                        <p>Accept quests from the board or propose your own heroic adventures for custom rewards.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-card-icon">🏪</span>
+                        <h4>Player Shops</h4>
+                        <p>Open your own shop and sell Minecraft items to other players. Build your merchant empire!</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-card-icon">📬</span>
+                        <h4>Divine Mail</h4>
+                        <p>Receive letters from gods, cabin invites, quest updates, and messages from fellow demigods.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-card-icon">🏆</span>
+                        <h4>Events & Competitions</h4>
+                        <p>Participate in camp events like Chariot Racing, Capture the Flag, and Monster Hunts!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════════════════════════════════════
+             GODS PAGE
+             ══════════════════════════════════════════════════════════════════════════════ -->
+        <section id="page-gods" class="page-section">
+            <div class="content-card">
+                <h2 class="section-title">
+                    <span class="title-icon">🏛️</span>
+                    The Olympian Gods
+                </h2>
+                
+                <p>The gods of Olympus watch over Camp Half-Blood, each claiming their mortal children. Discover your divine heritage by taking the claiming quiz with <code>!claim</code>, or browse the pantheon below to learn about each deity.</p>
+                
+                <div class="info-box tip">
+                    <div class="info-box-title">⚡ Claiming Quiz</div>
+                    <p>Answer a series of personality questions and the gods will reveal your true parent! Use <code>!claim</code> on Discord to begin.</p>
+                </div>
+                
+                <div id="gods-grid" class="feature-grid">
+                    <!-- Gods will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════════════════════════════════════
+             COMMANDS PAGE
+             ══════════════════════════════════════════════════════════════════════════════ -->
+        <section id="page-commands" class="page-section">
+            <div class="content-card">
+                <h2 class="section-title">
+                    <span class="title-icon">📜</span>
+                    Discord Commands
+                </h2>
+                
+                <p>Master these commands to navigate Camp Half-Blood. All commands start with <code>!</code> and can be used in any channel the bot can see.</p>
+                
+                <h3>👤 Profile & Identity</h3>
+                
+                <div class="command-box">
+                    <div class="command-name">!profile</div>
+                    <div class="command-aliases">Aliases: !me, !stats, !p</div>
+                    <div class="command-desc">Your central hub — view stats and access Mail, Inventory, Shop, Games, and more through interactive buttons.</div>
+                </div>
+                
+                <div class="command-box">
+                    <div class="command-name">!claim</div>
+                    <div class="command-aliases">Aliases: !quiz</div>
+                    <div class="command-desc">Take the claiming quiz to discover your godly parent. Answer personality questions and be claimed!</div>
+                </div>
+                
+                <div class="command-box">
+                    <div class="command-name">!balance</div>
+                    <div class="command-aliases">Aliases: !bal, !drachma</div>
+                    <div class="command-desc">Check your current Drachma balance.</div>
+                </div>
+                
+                <h3>🏛️ Gods & Cabins</h3>
+                
+                <div class="command-box">
+                    <div class="command-name">!gods</div>
+                    <div class="command-desc">Browse all available Olympian gods with paginated navigation.</div>
+                </div>
+                
+                <div class="command-box">
+                    <div class="command-name">!cabin</div>
+                    <div class="command-desc">View your current cabin, members, and Divine Favor.</div>
+                </div>
+                
+                <div class="command-box">
+                    <div class="command-name">!cabin create [Name]</div>
+                    <div class="command-desc">Create a new cabin and become its leader.</div>
+                </div>
+                
+                <div class="command-box">
+                    <div class="command-name">!cabin list</div>
+                    <div class="command-desc">Browse all cabins at camp, sorted by Divine Favor.</div>
+                </div>
+                
+                <h3>💰 Economy</h3>
+                
+                <div class="command-box">
+                    <div class="command-name">!shop</div>
+                    <div class="command-aliases">Aliases: !store</div>
+                    <div class="command-desc">Open the camp store to purchase items with Drachma.</div>
+                </div>
+                
+                <div class="command-box">
+                    <div class="command-name">!inventory</div>
+                    <div class="command-aliases">Aliases: !inv, !items</div>
+                    <div class="command-desc">View all items in your inventory.</div>
+                </div>
+                
+                <div class="command-box">
+                    <div class="command-name">!games</div>
+                    <div class="command-aliases">Aliases: !game, !play, !minigames</div>
+                    <div class="command-desc">Open the mini-games menu to earn Drachma.</div>
+                </div>
+                
+                <h3>📬 Communication</h3>
+                
+                <div class="command-box">
+                    <div class="command-name">!mail</div>
+                    <div class="command-desc">Open your mailbox to read messages from gods, players, and the system.</div>
+                </div>
+                
+                <div class="command-box">
+                    <div class="command-name">!weblink</div>
+                    <div class="command-desc">Generate a code to link your Discord account to this website portal.</div>
+                </div>
+                
+                <h3>⛏️ Minecraft</h3>
+                
+                <div class="command-box">
+                    <div class="command-name">!mclink [MinecraftName]</div>
+                    <div class="command-desc">Link your Minecraft account for cross-platform rewards.</div>
+                </div>
+                
+                <div class="command-box">
+                    <div class="command-name">!mcsync</div>
+                    <div class="command-desc">Force sync your balance and data with Minecraft.</div>
+                </div>
+                
+                <div class="command-box">
+                    <div class="command-name">!mconline</div>
+                    <div class="command-aliases">Aliases: !online, !whoisonline</div>
+                    <div class="command-desc">See which linked players are currently online in Minecraft.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════════════════════════════════════
+             GAMES PAGE
+             ══════════════════════════════════════════════════════════════════════════════ -->
+        <section id="page-games" class="page-section">
+            <div class="content-card">
+                <h2 class="section-title">
+                    <span class="title-icon">🎮</span>
+                    Arena of Games
+                </h2>
+                
+                <p>Test your skills in mythology-themed mini-games! Each game offers unique challenges and Drachma rewards. Use <code>!games</code> on Discord to access the full arcade.</p>
+                
+                <div class="info-box tip">
+                    <div class="info-box-title">⏱️ Cooldowns</div>
+                    <p>Each game has a cooldown of 4-10 minutes after playing. Plan your gaming sessions strategically!</p>
+                </div>
+                
+                <div id="games-grid" class="feature-grid">
+                    <!-- Games will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="content-card">
+                <h2 class="section-title">
+                    <span class="title-icon">⚡</span>
+                    Daily Challenges
+                </h2>
+                
+                <p>Every day, a special prompt appears at a random time with a mythology trivia challenge! React quickly with ⚡ to claim your personal challenge and earn bonus Drachma.</p>
+                
+                <h3>Challenge Types</h3>
+                <ul>
+                    <li><strong>🐍 Serpent's Riddle</strong> — Classic mythology riddles</li>
+                    <li><strong>⚖️ Athena's Test</strong> — Greek mythology trivia</li>
+                    <li><strong>🎲 Hermes' Gambit</strong> — Games of wit and chance</li>
+                    <li><strong>🔥 Hephaestus' Forge</strong> — Crafting knowledge</li>
+                    <li><strong>🌊 Poseidon's Wave</strong> — Sea god lore</li>
+                    <li><strong>💀 Hades' Bargain</strong> — Underworld knowledge</li>
+                    <li><strong>⚡ Zeus' Storm</strong> — King of gods trivia</li>
+                    <li><strong>🍇 Dionysus' Game</strong> — Wine god questions</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════════════════════════════════════
+             MINECRAFT PAGE
+             ══════════════════════════════════════════════════════════════════════════════ -->
+        <section id="page-minecraft" class="page-section">
+            <div class="content-card">
+                <h2 class="section-title">
+                    <span class="title-icon">⛏️</span>
+                    Minecraft Integration
+                </h2>
+                
+                <p>Camp Half-Blood features full two-way synchronization between Discord and Minecraft. Your Drachma, items, and progress transfer seamlessly between both platforms!</p>
+                
+                <h3>🔗 Linking Your Account</h3>
+                
+                <div class="command-box">
+                    <div class="command-name">!mclink [MinecraftName]</div>
+                    <div class="command-desc">Link your Discord to your Minecraft account. Use your exact in-game name.</div>
+                </div>
+                
+                <h3>🎮 In-Game Commands</h3>
+                
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Command</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>/chbprofile</code></td>
+                                <td>View your Camp Half-Blood profile in-game</td>
+                            </tr>
+                            <tr>
+                                <td><code>/chbbalance</code></td>
+                                <td>Check your current Drachma balance</td>
+                            </tr>
+                            <tr>
+                                <td><code>/chbdeposit [amount]</code></td>
+                                <td>Deposit Drachma items from your inventory</td>
+                            </tr>
+                            <tr>
+                                <td><code>/chbwithdraw [amount]</code></td>
+                                <td>Withdraw Drachma as physical items</td>
+                            </tr>
+                            <tr>
+                                <td><code>/chbpending</code></td>
+                                <td>Receive items purchased on Discord</td>
+                            </tr>
+                            <tr>
+                                <td><code>/chbsync</code></td>
+                                <td>Force sync with Discord</td>
+                            </tr>
+                            <tr>
+                                <td><code>/chblb</code></td>
+                                <td>View the Drachma leaderboard</td>
+                            </tr>
+                            <tr>
+                                <td><code>/chbhelp</code></td>
+                                <td>Show all available commands</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3>💎 Shop Items</h3>
+                <p>Purchase Minecraft items with Drachma on Discord using <code>!shop</code>:</p>
+                
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Price</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>⚔️ Diamond Sword</td>
+                                <td>30 💰</td>
+                                <td>A classic weapon for any demigod</td>
+                            </tr>
+                            <tr>
+                                <td>⛏️ Diamond Pickaxe</td>
+                                <td>30 💰</td>
+                                <td>Essential for mining expeditions</td>
+                            </tr>
+                            <tr>
+                                <td>🟫 Netherite Ingot</td>
+                                <td>50 💰</td>
+                                <td>Precious metal from the depths</td>
+                            </tr>
+                            <tr>
+                                <td>🗿 Totem of Undying</td>
+                                <td>75 💰</td>
+                                <td>Cheat death once</td>
+                            </tr>
+                            <tr>
+                                <td>🔱 Trident</td>
+                                <td>80 💰</td>
+                                <td>Worthy of Poseidon's children</td>
+                            </tr>
+                            <tr>
+                                <td>🍎 Enchanted Golden Apple</td>
+                                <td>100 💰</td>
+                                <td>The legendary Notch Apple</td>
+                            </tr>
+                            <tr>
+                                <td>💎 Full Diamond Armor</td>
+                                <td>120 💰</td>
+                                <td>Complete protection set</td>
+                            </tr>
+                            <tr>
+                                <td>🪽 Elytra Wings</td>
+                                <td>200 💰</td>
+                                <td>Glide through the skies</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════════════════════════════════════════════════════
+             PORTAL PAGE (Main Hub when logged in)
+             ══════════════════════════════════════════════════════════════════════════════ -->
+        <section id="page-portal" class="page-section">
+            <!-- Login View -->
+            <div id="portal-login" class="portal-view">
+                <div class="content-card" style="max-width: 600px; margin: 2rem auto;">
+                    <div class="text-center">
+                        <div style="font-size: 5rem; margin-bottom: 1rem;">🏛️</div>
+                        <h2 class="section-title" style="justify-content: center; border: none; padding: 0;">
+                            Enter the Portal
+                        </h2>
+                        <p class="mb-3">Link your Discord account to access exclusive features, view your profile, read divine mail, and explore the mysteries of Camp Half-Blood.</p>
+                        
+                        <div class="form-group">
+                            <input type="text" 
+                                   id="linkCode" 
+                                   class="form-input code-input" 
+                                   placeholder="ABC123" 
+                                   maxlength="6"
+                                   autocomplete="off"
+                                   style="margin: 0 auto;">
+                        </div>
+                        
+                        <button id="loginBtn" class="btn btn-primary" onclick="Portal.login()">
+                            ⚡ Enter Camp ⚡
+                        </button>
+                        
+                        <div id="loginError" class="info-box danger mt-2 hidden">
+                            <p id="loginErrorText"></p>
+                        </div>
+                        
+                        <hr style="border: none; border-top: 1px solid rgba(212,175,55,0.2); margin: 2rem 0;">
+                        
+                        <h4>How to Get Your Code</h4>
+                        <ol style="text-align: left; max-width: 400px; margin: 1rem auto;">
+                            <li>Go to <strong>Discord</strong> and find Camp Half-Blood</li>
+                            <li>Type <code>!weblink</code> in any channel</li>
+                            <li>The bot will DM you a <strong>6-character code</strong></li>
+                            <li>Enter the code above within <strong>10 minutes</strong></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Logged In View -->
+            <div id="portal-main" class="portal-view hidden">
+                <!-- Portal Navigation -->
+                <div class="portal-nav mb-3">
+                    <button class="btn btn-secondary portal-tab active" data-portal-tab="dashboard">
+                        🏠 Dashboard
+                    </button>
+                    <button class="btn btn-secondary portal-tab" data-portal-tab="mail">
+                        📬 Divine Mail
+                    </button>
+                    <button class="btn btn-secondary portal-tab" data-portal-tab="quizzes">
+                        🔮 Quizzes
+                    </button>
+                    <button class="btn btn-secondary portal-tab" data-portal-tab="timeline">
+                        📜 Timeline
+                    </button>
+                    <button class="btn btn-danger" onclick="Portal.logout()" style="margin-left: auto;">
+                        🚪 Logout
+                    </button>
+                </div>
+                
+                <!-- Dashboard Tab -->
+                <div id="portal-dashboard" class="portal-content active">
+                    <div class="content-card" id="profileCard">
+                        <!-- Profile content loaded dynamically -->
+                        <div class="loading">
+                            <div class="loading-spinner"></div>
+                            <p>Consulting the Oracle...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card">
+                        <h2 class="section-title">
+                            <span class="title-icon">📊</span>
+                            Your Journey
+                        </h2>
+                        <div id="journeyInfo" class="feature-grid">
+                            <!-- Journey info loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mail Tab -->
+                <div id="portal-mail" class="portal-content hidden">
+                    <div class="content-card">
+                        <h2 class="section-title">
+                            <span class="title-icon">📬</span>
+                            Divine Mail
+                        </h2>
+                        <p>Messages from the gods arrive on parchment scrolls sealed with divine wax. Click a message to read it in full.</p>
+                        <div id="mailList">
+                            <div class="loading">
+                                <div class="loading-spinner"></div>
+                                <p>Hermes is gathering your messages...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quizzes Tab -->
+                <div id="portal-quizzes" class="portal-content hidden">
+                    <div class="content-card">
+                        <h2 class="section-title">
+                            <span class="title-icon">🔮</span>
+                            Oracle's Quizzes
+                        </h2>
+                        <p>The Oracle of Delphi offers glimpses into your demigod soul. Complete these mystical quizzes to discover hidden aspects of your character!</p>
+                        <div id="quizzesList" class="feature-grid">
+                            <!-- Quizzes loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Tab -->
+                <div id="portal-timeline" class="portal-content hidden">
+                    <div class="content-card">
+                        <h2 class="section-title">
+                            <span class="title-icon">📜</span>
+                            Camp Chronicle
+                        </h2>
+                        <p>The history of Camp Half-Blood, recorded for eternity...</p>
+                        <div id="timelineList">
+                            <div class="loading">
+                                <div class="loading-spinner"></div>
+                                <p>Unrolling the ancient scrolls...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-symbol">⚡ 🏛️ ⚡</div>
+        <p>Camp Half-Blood — Where Heroes Are Forged</p>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Discord & Minecraft Bot System</p>
+        <div class="footer-links">
+            <a href="#" data-page="home">Home</a>
+            <a href="#" data-page="gods">Gods</a>
+            <a href="#" data-page="commands">Commands</a>
+            <a href="#" data-page="portal">Portal</a>
+        </div>
+    </footer>
+
+    <!-- Mail Reading Modal -->
+    <div id="mailModal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="mailModalTitle">Divine Message</h3>
+                <button class="modal-close" onclick="Portal.closeMailModal()">×</button>
+            </div>
+            <div class="modal-body" id="mailModalBody">
+                <!-- Mail content loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="Portal.closeMailModal()">Close</button>
+                <button class="btn btn-danger" id="mailDeleteBtn">🗑️ Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Modal -->
+    <div id="quizModal" class="modal-overlay">
+        <div class="modal" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3 class="modal-title" id="quizModalTitle">Oracle's Quiz</h3>
+                <button class="modal-close" onclick="Quizzes.closeQuiz()">×</button>
+            </div>
+            <div class="modal-body" id="quizModalBody">
+                <!-- Quiz content loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+    // ══════════════════════════════════════════════════════════════════════════════
+    // CONFIGURATION
+    // ══════════════════════════════════════════════════════════════════════════════
+    const CONFIG = {
+        // API Base URL - Update this to your Railway deployment URL
+        API_BASE: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+            ? 'http://localhost:8080'
+            : '', // Empty = same origin (when hosted together)
+        
+        // Session storage key
+        SESSION_KEY: 'chb_session_token',
+        
+        // Refresh interval for live data (ms)
+        REFRESH_INTERVAL: 30000
+    };
+
+    // ══════════════════════════════════════════════════════════════════════════════
+    // GOD DATA
+    // ══════════════════════════════════════════════════════════════════════════════
+    const GODS = {
+        'Zeus': { emoji: '⚡', domain: 'Sky, Thunder, King of Gods', color: '#4FC3F7', description: 'Lord of the sky and ruler of Olympus. Children of Zeus are natural leaders with authority in their veins.' },
+        'Poseidon': { emoji: '🔱', domain: 'Sea, Earthquakes, Horses', color: '#20B2AA', description: 'God of the seas and shaker of the earth. His children command the waters and feel most at home near the ocean.' },
+        'Hades': { emoji: '💀', domain: 'Underworld, Death, Riches', color: '#6B4C9A', description: 'Lord of the dead and ruler of the Underworld. His rare children possess dark powers and connection to shadows.' },
+        'Athena': { emoji: '🦉', domain: 'Wisdom, Warfare, Crafts', color: '#708090', description: 'Goddess of wisdom and strategic warfare. Her children are brilliant strategists and skilled craftspeople.' },
+        'Apollo': { emoji: '☀️', domain: 'Sun, Music, Prophecy, Healing', color: '#FFD700', description: 'God of the sun, music, and prophecy. His children excel in archery, music, and sometimes receive prophetic visions.' },
+        'Artemis': { emoji: '🏹', domain: 'Hunt, Moon, Wilderness', color: '#C0C0C0', description: 'Goddess of the hunt and the moon. She has no demigod children, but her Hunters are legendary.' },
+        'Ares': { emoji: '⚔️', domain: 'War, Violence, Bloodshed', color: '#DC143C', description: 'God of war and violence. His children are fierce warriors who thrive in battle.' },
+        'Aphrodite': { emoji: '💕', domain: 'Love, Beauty, Desire', color: '#FF69B4', description: 'Goddess of love and beauty. Her children can charmspeak and influence emotions.' },
+        'Hephaestus': { emoji: '🔨', domain: 'Fire, Forge, Craftsmanship', color: '#FF6B35', description: 'God of fire and the forge. His children are master builders and inventors.' },
+        'Hermes': { emoji: '👟', domain: 'Travel, Thieves, Messengers', color: '#4169E1', description: 'Messenger god and patron of travelers and thieves. His children are swift, clever, and resourceful.' },
+        'Demeter': { emoji: '🌾', domain: 'Agriculture, Harvest, Seasons', color: '#90EE90', description: 'Goddess of the harvest and agriculture. Her children have power over plants and growth.' },
+        'Dionysus': { emoji: '🍇', domain: 'Wine, Festivity, Madness', color: '#8B008B', description: 'God of wine and celebration. Camp director who\'d rather be anywhere else.' },
+        'Hera': { emoji: '👑', domain: 'Marriage, Family, Queens', color: '#4B0082', description: 'Queen of the gods and protector of marriage. She has no demigod children.' },
+        'Hecate': { emoji: '🌙', domain: 'Magic, Crossroads, Necromancy', color: '#9370DB', description: 'Goddess of magic and the crossroads. Her children wield powerful sorcery.' },
+        'Hypnos': { emoji: '😴', domain: 'Sleep, Dreams', color: '#E6E6FA', description: 'God of sleep. His children can manipulate sleep and enter dreams.' },
+        'Nike': { emoji: '🏆', domain: 'Victory', color: '#FFD700', description: 'Goddess of victory. Her children are driven to win at all costs.' },
+        'Nemesis': { emoji: '⚖️', domain: 'Revenge, Balance, Justice', color: '#808080', description: 'Goddess of retribution. Her children have a strong sense of justice and balance.' },
+        'Iris': { emoji: '🌈', domain: 'Rainbows, Messages', color: 'linear-gradient(90deg, #FF0000, #FF7F00, #FFFF00, #00FF00, #0000FF, #8F00FF)', description: 'Goddess of rainbows and messenger of the gods. Her children can manipulate light and color.' },
+        'Tyche': { emoji: '🎲', domain: 'Luck, Fortune, Chance', color: '#50C878', description: 'Goddess of luck and fortune. Her children seem to have luck on their side.' },
+        'Hestia': { emoji: '🔥', domain: 'Hearth, Home, Family', color: '#FFA500', description: 'Goddess of the hearth. A virgin goddess who tends the sacred flames of Olympus.' }
+    };
+
+    // ══════════════════════════════════════════════════════════════════════════════
+    // GAMES DATA
+    // ══════════════════════════════════════════════════════════════════════════════
+    const GAMES = [
+        { id: 'godly_trials', name: 'Godly Trials', emoji: '⚔️', desc: 'Face 3 mythological encounters with different choices', reward: '3 💰' },
+        { id: 'labyrinth_escape', name: 'Labyrinth Escape', emoji: '🏛️', desc: 'Navigate Daedalus\'s deadly maze across 3 rounds', reward: '5 💰' },
+        { id: 'cerberus_dodge', name: 'Cerberus Dodge', emoji: '🐕', desc: 'Dodge the three-headed guardian\'s attacks', reward: '1-5 💰' },
+        { id: 'chariot_race', name: 'Chariot Race', emoji: '🏇', desc: 'Race your chariot to the finish line!', reward: '4 💰' },
+        { id: 'olympian_archery', name: 'Olympian Archery', emoji: '🏹', desc: 'Master the bow at the archery range', reward: 'Varies' },
+        { id: 'lightning_roulette', name: 'Lightning Roulette', emoji: '⚡', desc: 'High-risk, high-reward game of chance', reward: '2-25 💰' },
+        { id: 'hydra_strike', name: 'Hydra Strike', emoji: '🐉', desc: 'Cut all the Hydra\'s heads before they multiply', reward: '4-6 💰' },
+        { id: 'oracle_vision', name: 'Oracle\'s Vision', emoji: '🔮', desc: 'Match mystical symbol pairs in this memory game', reward: '4-7 💰' },
+        { id: 'siren_song', name: 'Siren\'s Song', emoji: '🎵', desc: 'Remember and repeat the Siren\'s pattern', reward: 'Varies' },
+        { id: 'pegasus_flight', name: 'Pegasus Flight', emoji: '🦄', desc: 'Fly through storm clouds to Mount Olympus', reward: '5 💰' }
+    ];
+
+    // ══════════════════════════════════════════════════════════════════════════════
+    // QUIZZES DATA
+    // ══════════════════════════════════════════════════════════════════════════════
+    const QUIZZES = [
+        {
+            id: 'demigod_traits',
+            name: 'Demigod Traits',
+            emoji: '⚡',
+            description: 'Discover your unique demigod abilities and characteristics.',
+            questions: [
+                {
+                    q: 'When facing a challenge, you prefer to:',
+                    options: [
+                        { text: 'Charge in head-first with courage', traits: { bravery: 3, strategy: 0, empathy: 1 } },
+                        { text: 'Devise a careful plan before acting', traits: { bravery: 1, strategy: 3, empathy: 0 } },
+                        { text: 'Seek allies and work together', traits: { bravery: 1, strategy: 1, empathy: 3 } },
+                        { text: 'Find an unconventional solution', traits: { bravery: 2, strategy: 2, empathy: 1 } }
+                    ]
+                },
+                {
+                    q: 'Your ideal weapon would be:',
+                    options: [
+                        { text: 'A celestial bronze sword', traits: { combat: 3, magic: 0, stealth: 0 } },
+                        { text: 'A bow with enchanted arrows', traits: { combat: 2, magic: 1, stealth: 2 } },
+                        { text: 'A staff channeling divine power', traits: { combat: 0, magic: 3, stealth: 1 } },
+                        { text: 'A concealed dagger', traits: { combat: 1, magic: 0, stealth: 3 } }
+                    ]
+                },
+                {
+                    q: 'In the mortal world, you feel most at home:',
+                    options: [
+                        { text: 'By the ocean or bodies of water', traits: { element: 'water' } },
+                        { text: 'In high places with open skies', traits: { element: 'air' } },
+                        { text: 'Underground or in shadowy places', traits: { element: 'earth' } },
+                        { text: 'Near fires and forges', traits: { element: 'fire' } }
+                    ]
+                },
+                {
+                    q: 'When a monster attacks, your instinct is to:',
+                    options: [
+                        { text: 'Protect others first, fight second', traits: { guardian: 3, warrior: 1, survivor: 0 } },
+                        { text: 'Identify its weakness and exploit it', traits: { guardian: 1, warrior: 2, survivor: 2 } },
+                        { text: 'Engage it directly with all your strength', traits: { guardian: 1, warrior: 3, survivor: 0 } },
+                        { text: 'Find an escape route for everyone', traits: { guardian: 2, warrior: 0, survivor: 3 } }
+                    ]
+                },
+                {
+                    q: 'The quality you value most in a fellow demigod is:',
+                    options: [
+                        { text: 'Unwavering loyalty', traits: { virtue: 'loyalty' } },
+                        { text: 'Brilliant intelligence', traits: { virtue: 'wisdom' } },
+                        { text: 'Fierce courage', traits: { virtue: 'courage' } },
+                        { text: 'Kind compassion', traits: { virtue: 'compassion' } }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'quest_destiny',
+            name: 'Quest Destiny',
+            emoji: '📜',
+            description: 'Learn what kind of heroic quest awaits in your future.',
+            questions: [
+                {
+                    q: 'The Oracle speaks of your quest. You hope it involves:',
+                    options: [
+                        { text: 'Rescuing someone in danger', traits: { quest: 'rescue' } },
+                        { text: 'Retrieving a powerful artifact', traits: { quest: 'retrieval' } },
+                        { text: 'Defeating a great monster', traits: { quest: 'combat' } },
+                        { text: 'Discovering ancient secrets', traits: { quest: 'mystery' } }
+                    ]
+                },
+                {
+                    q: 'Your quest companion would ideally be:',
+                    options: [
+                        { text: 'A powerful warrior for protection', traits: { companion: 'warrior' } },
+                        { text: 'A clever strategist for planning', traits: { companion: 'strategist' } },
+                        { text: 'A satyr guide who knows the land', traits: { companion: 'guide' } },
+                        { text: 'A sibling from your cabin', traits: { companion: 'family' } }
+                    ]
+                },
+                {
+                    q: 'If your quest took you to the Underworld, you would:',
+                    options: [
+                        { text: 'Bargain with Hades directly', traits: { approach: 'diplomatic' } },
+                        { text: 'Sneak past Cerberus unseen', traits: { approach: 'stealth' } },
+                        { text: 'Fight your way through', traits: { approach: 'combat' } },
+                        { text: 'Find another entrance entirely', traits: { approach: 'clever' } }
+                    ]
+                },
+                {
+                    q: 'The most dangerous part of any quest is:',
+                    options: [
+                        { text: 'The monsters that hunt you', traits: { fear: 'monsters' } },
+                        { text: 'Betrayal by those you trust', traits: { fear: 'betrayal' } },
+                        { text: 'Running out of time', traits: { fear: 'time' } },
+                        { text: 'Your own doubts and fears', traits: { fear: 'self' } }
+                    ]
+                },
+                {
+                    q: 'After completing your quest, you hope to:',
+                    options: [
+                        { text: 'Return home a celebrated hero', traits: { goal: 'glory' } },
+                        { text: 'Have grown stronger and wiser', traits: { goal: 'growth' } },
+                        { text: 'Have saved those who needed help', traits: { goal: 'help' } },
+                        { text: 'Discover more about yourself', traits: { goal: 'discovery' } }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'mythical_creature',
+            name: 'Spirit Animal',
+            emoji: '🦅',
+            description: 'Which mythical creature is bound to your spirit?',
+            questions: [
+                {
+                    q: 'You feel most powerful during:',
+                    options: [
+                        { text: 'The bright light of day', traits: { time: 'day' } },
+                        { text: 'The mysterious night', traits: { time: 'night' } },
+                        { text: 'The golden twilight hours', traits: { time: 'twilight' } },
+                        { text: 'During storms and chaos', traits: { time: 'storm' } }
+                    ]
+                },
+                {
+                    q: 'Your greatest strength is:',
+                    options: [
+                        { text: 'Physical power and endurance', traits: { strength: 'physical' } },
+                        { text: 'Speed and agility', traits: { strength: 'speed' } },
+                        { text: 'Intelligence and cunning', traits: { strength: 'mind' } },
+                        { text: 'Loyalty and devotion', traits: { strength: 'heart' } }
+                    ]
+                },
+                {
+                    q: 'In nature, you\'re drawn to:',
+                    options: [
+                        { text: 'Soaring mountain peaks', traits: { habitat: 'mountains' } },
+                        { text: 'Deep ocean waters', traits: { habitat: 'ocean' } },
+                        { text: 'Ancient forests', traits: { habitat: 'forest' } },
+                        { text: 'Volcanic or extreme environments', traits: { habitat: 'extreme' } }
+                    ]
+                },
+                {
+                    q: 'When threatened, you:',
+                    options: [
+                        { text: 'Stand your ground and fight', traits: { defense: 'fight' } },
+                        { text: 'Take flight and escape', traits: { defense: 'flight' } },
+                        { text: 'Use camouflage or hiding', traits: { defense: 'hide' } },
+                        { text: 'Call for allies', traits: { defense: 'allies' } }
+                    ]
+                },
+                {
+                    q: 'You believe destiny has made you:',
+                    options: [
+                        { text: 'A guardian and protector', traits: { role: 'guardian' } },
+                        { text: 'A hunter and tracker', traits: { role: 'hunter' } },
+                        { text: 'A messenger and guide', traits: { role: 'messenger' } },
+                        { text: 'A warrior and champion', traits: { role: 'warrior' } }
+                    ]
+                }
+            ],
+            results: {
+                'day+physical+mountains+fight+guardian': { creature: 'Griffin', emoji: '🦅', desc: 'The noble Griffin, part eagle and part lion, guards treasures and represents courage and leadership.' },
+                'night+speed+forest+flight+hunter': { creature: 'Hellhound', emoji: '🐕', desc: 'A Hellhound, swift shadow hunter of the Underworld. Fierce and loyal beyond measure.' },
+                'twilight+mind+forest+hide+messenger': { creature: 'Sphinx', emoji: '🦁', desc: 'The wise Sphinx, keeper of riddles and ancient knowledge. Your mind is your greatest weapon.' },
+                'storm+physical+ocean+fight+warrior': { creature: 'Hippocampus', emoji: '🐴', desc: 'The mighty Hippocampus, horse of the sea. You bridge two worlds with strength and grace.' },
+                'day+speed+mountains+flight+messenger': { creature: 'Pegasus', emoji: '🦄', desc: 'The legendary Pegasus, winged horse of heroes. Freedom and inspiration flow through you.' },
+                'night+mind+extreme+allies+guardian': { creature: 'Dragon', emoji: '🐉', desc: 'An ancient Dragon, wise and powerful. You guard what matters most with fierce devotion.' }
+            }
+        }
+    ];
+
+    // ══════════════════════════════════════════════════════════════════════════════
+    // UTILITY FUNCTIONS
+    // ══════════════════════════════════════════════════════════════════════════════
+    const Utils = {
+        escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        },
+
+        formatDate(dateStr) {
+            if (!dateStr) return '';
+            try {
+                return new Date(dateStr).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+            } catch (e) {
+                return dateStr;
+            }
+        },
+
+        formatNumber(num) {
+            return (num || 0).toLocaleString();
+        }
+    };
+
+    // ══════════════════════════════════════════════════════════════════════════════
+    // COSMOS BACKGROUND
+    // ══════════════════════════════════════════════════════════════════════════════
+    const Cosmos = {
+        init() {
+            const container = document.getElementById('cosmos-bg');
+            if (!container) return;
+
+            // Create stars
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = (Math.random() * 2 + 1) + 'px';
+                star.style.height = star.style.width;
+                star.style.setProperty('--duration', (2 + Math.random() * 3) + 's');
+                star.style.setProperty('--delay', Math.random() * 3 + 's');
+                star.style.setProperty('--min-opacity', 0.2 + Math.random() * 0.3);
+                container.appendChild(star);
+            }
+
+            // Create shooting stars
+            for (let i = 0; i < 3; i++) {
+                const shooting = document.createElement('div');
+                shooting.className = 'shooting-star';
+                shooting.style.top = (Math.random() * 50) + '%';
+                shooting.style.left = '-100px';
+                shooting.style.animationDelay = (i * 10 + Math.random() * 5) + 's';
+                shooting.style.animationDuration = (2 + Math.random() * 2) + 's';
+                container.appendChild(shooting);
+            }
+
+            // Create floating Greek symbols
+            const symbols = ['Ω', 'Δ', 'Σ', 'Φ', 'Ψ', 'α', 'β', 'γ', 'λ', 'π', '☿', '♃', '♄', '♆'];
+            for (let i = 0; i < 12; i++) {
+                const symbol = document.createElement('div');
+                symbol.className = 'greek-float';
+                symbol.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                symbol.style.left = Math.random() * 100 + '%';
+                symbol.style.top = Math.random() * 100 + '%';
+                symbol.style.fontSize = (20 + Math.random() * 40) + 'px';
+                symbol.style.animationDelay = Math.random() * 10 + 's';
+                symbol.style.animationDuration = (20 + Math.random() * 15) + 's';
+                container.appendChild(symbol);
+            }
+        }
+    };
+
+    // ══════════════════════════════════════════════════════════════════════════════
+    // NAVIGATION
+    // ══════════════════════════════════════════════════════════════════════════════
+    const Nav = {
+        init() {
+            // Main navigation
+            document.querySelectorAll('.nav-btn[data-page]').forEach(btn => {
+                btn.addEventListener('click', () => this.goToPage(btn.dataset.page));
+            });
+
+            // Footer links
+            document.querySelectorAll('.footer-links a[data-page]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.goToPage(link.dataset.page);
+                });
+            });
+
+            // Portal tabs
+            document.querySelectorAll('.portal-tab').forEach(btn => {
+                btn.addEventListener('click', () => this.goToPortalTab(btn.dataset.portalTab));
+            });
+        },
+
+        goToPage(pageId) {
+            // Update nav buttons
+            document.querySelectorAll('.nav-btn[data-page]').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.page === pageId);
+            });
+
+            // Update page sections
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.toggle('active', section.id === 'page-' + pageId);
+            });
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Load data if needed
+            if (pageId === 'portal' && Portal.isLoggedIn()) {
+                Portal.loadData();
+            }
+        },
+
+        goToPortalTab(tabId) {
+            document.querySelectorAll('.portal-tab').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.portalTab === tabId);
+            });
+
+            document.querySelectorAll('.portal-content').forEach(content => {
+                content.classList.toggle('active', content.id === 'portal-' + tabId);
+                content.classList.toggle('hidden', content.id !== 'portal-' + tabId);
+            });
+
+            // Load specific tab data
+            if (tabId === 'mail') Portal.loadMail();
+            if (tabId === 'quizzes') Quizzes.loadList();
+            if (tabId === 'timeline') Portal.loadTimeline();
+        }
+    };
+
+    // ══════════════════════════════════════════════════════════════════════════════
+    // PORTAL (Authentication & User Data)
+    // ══════════════════════════════════════════════════════════════════════════════
+    const Portal = {
+        sessionToken: null,
+        userData: null,
+        refreshTimer: null,
+
+        init() {
+            this.sessionToken = localStorage.getItem(CONFIG.SESSION_KEY);
+            if (this.sessionToken) {
+                this.checkSession();
+            }
+
+            // Enter key on code input
+            document.getElementById('linkCode')?.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') this.login();
+            });
+        },
+
+        isLoggedIn() {
+            return !!this.sessionToken && !!this.userData;
+        },
+
+        async api(endpoint, options = {}) {
+            const headers = { 'Content-Type': 'application/json', ...options.headers };
+            if (this.sessionToken) {
+                headers['X-Session-Token'] = this.sessionToken;
+            }
+
+            try {
+                const response = await fetch(CONFIG.API_BASE + endpoint, { ...options, headers });
+                if (response.status === 401) {
+                    this.logout();
+                    throw new Error('Session expired');
+                }
+                return response;
+            } catch (e) {
+                console.error('API Error:', e);
+                throw e;
+            }
+        },
+
+        async checkSession() {
+            try {
+                const response = await this.api('/api/auth/check');
+                const data = await response.json();
+                
+                if (data.authenticated) {
+                    this.userData = {
+                        discord_id: data.discord_id,
+                        discord_username: data.discord_username
+                    };
+                    this.showLoggedInState();
+                    this.loadData();
+                    this.startRefreshTimer();
+                } else {
+                    this.showLoggedOutState();
+                }
+            } catch (e) {
+                this.showLoggedOutState();
+            }
+        },
+
+        async login() {
+            const codeInput = document.getElementById('linkCode');
+            const code = codeInput.value.trim().toUpperCase();
+            const errorDiv = document.getElementById('loginError');
+            const errorText = document.getElementById('loginErrorText');
+            const btn = document.getElementById('loginBtn');
+
+            if (code.length !== 6) {
+                errorText.textContent = 'Please enter a 6-character code';
+                errorDiv.classList.remove('hidden');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = '⌛ Verifying...';
+            errorDiv.classList.add('hidden');
+
+            try {
+                const response = await fetch(CONFIG.API_BASE + '/api/auth/link', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ code })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    this.sessionToken = data.session_token;
+                    localStorage.setItem(CONFIG.SESSION_KEY, this.sessionToken);
+                    this.userData = {
+                        discord_id: data.discord_id,
+                        discord_username: data.discord_username
+                    };
+                    this.showLoggedInState();
+                    this.loadData();
+                    this.startRefreshTimer();
+                } else {
+                    errorText.textContent = data.error || 'Invalid or expired code. Please try again.';
+                    errorDiv.classList.remove('hidden');
+                }
+            } catch (e) {
+                errorText.textContent = 'Connection error. Make sure the server is running!';
+                errorDiv.classList.remove('hidden');
+            }
+
+            btn.disabled = false;
+            btn.textContent = '⚡ Enter Camp ⚡';
+        },
+
+        logout() {
+            localStorage.removeItem(CONFIG.SESSION_KEY);
+            this.sessionToken = null;
+            this.userData = null;
+            this.stopRefreshTimer();
+            this.showLoggedOutState();
+            document.getElementById('linkCode').value = '';
+        },
+
+        showLoggedInState() {
+            document.getElementById('portal-login').classList.add('hidden');
+            document.getElementById('portal-main').classList.remove('hidden');
+            document.getElementById('userIndicator').classList.add('visible');
+        },
+
+        showLoggedOutState() {
+            document.getElementById('portal-login').classList.remove('hidden');
+            document.getElementById('portal-main').classList.add('hidden');
+            document.getElementById('userIndicator').classList.remove('visible');
+        },
+
+        startRefreshTimer() {
+            this.stopRefreshTimer();
+            this.refreshTimer = setInterval(() => this.loadData(), CONFIG.REFRESH_INTERVAL);
+        },
+
+        stopRefreshTimer() {
+            if (this.refreshTimer) {
+                clearInterval(this.refreshTimer);
+                this.refreshTimer = null;
+            }
+        },
+
+        async loadData() {
+            await Promise.all([
+                this.loadProfile(),
+                this.loadMail()
+            ]);
+        },
+
+        async loadProfile() {
+            try {
+                const response = await this.api('/api/player/profile');
+                const data = await response.json();
+
+                if (data.error) return;
+
+                const godInfo = GODS[data.god_parent] || { emoji: '❓', domain: 'Unknown' };
+
+                // Update header indicator
+                document.getElementById('userAvatar').textContent = godInfo.emoji;
+                document.getElementById('userName').textContent = data.username || this.userData.discord_username;
+                document.getElementById('userDrachma').textContent = Utils.formatNumber(data.drachma) + ' 💰';
+
+                // Update profile card
+                document.getElementById('profileCard').innerHTML = `
+                    <div style="display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center;">
+                        <div style="position: relative;">
+                            <div style="width: 150px; height: 150px; background: linear-gradient(135deg, var(--gold) 0%, var(--bronze) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 4rem; box-shadow: var(--shadow-gold-intense);">
+                                ${godInfo.emoji}
+                            </div>
+                        </div>
+                        <div>
+                            <h2 style="font-family: 'Cinzel Decorative', serif; font-size: 2.5rem; color: var(--gold); margin-bottom: 0.25rem;">
+                                ${Utils.escapeHtml(data.username || this.userData.discord_username)}
+                            </h2>
+                            <p style="font-size: 1.3rem; color: var(--gold-light); margin-bottom: 1.5rem;">
+                                ${data.god_parent ? `${godInfo.emoji} Child of ${data.god_parent}` : '❓ Unclaimed — Use !claim on Discord'}
+                            </p>
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                                <div class="stat-box" style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.2); border-radius: 12px; padding: 1.25rem; text-align: center;">
+                                    <div style="font-family: 'Cinzel Decorative', serif; font-size: 2rem; color: var(--zeus-lightning);">${Utils.formatNumber(data.drachma)}</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">💰 Drachma</div>
+                                </div>
+                                <div class="stat-box" style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.2); border-radius: 12px; padding: 1.25rem; text-align: center;">
+                                    <div style="font-family: 'Cinzel Decorative', serif; font-size: 2rem; color: var(--zeus-lightning);">${data.inventory_count || 0}</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">🎒 Items</div>
+                                </div>
+                                <div class="stat-box" style="background: rgba(0,0,0,0.3); border: 1px solid rgba(212,175,55,0.2); border-radius: 12px; padding: 1.25rem; text-align: center;">
+                                    <div style="font-family: 'Cinzel Decorative', serif; font-size: 2rem; color: var(--zeus-lightning);">${data.unread_mail || 0}</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase;">📬 Unread</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Update journey info
+                document.getElementById('journeyInfo').innerHTML = `
+                    <div class="feature-card">
+                        <span class="feature-card-icon">🏕️</span>
+                        <h4>Cabin</h4>
+                        <p>${data.cabin ? `${data.cabin.cabin_name} (${data.cabin.divine_favor || 0} Divine Favor)` : 'Not in a cabin — Use !cabin on Discord'}</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-card-icon">⛏️</span>
+                        <h4>Minecraft</h4>
+                        <p>${data.minecraft_link ? `Linked: ${data.minecraft_link.username}` : 'Not linked — Use !mclink on Discord'}</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-card-icon">🏪</span>
+                        <h4>Shop</h4>
+                        <p>${data.shop ? `${data.shop.shop_name} (${data.shop.shop_type})` : 'No shop — Buy a permit from !shop'}</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-card-icon">📅</span>
+                        <h4>Member Since</h4>
+                        <p>${data.created_at ? Utils.formatDate(data.created_at) : 'Unknown'}</p>
+                    </div>
+                `;
+
+            } catch (e) {
+                console.error('Failed to load profile:', e);
+            }
+        },
+
+        async loadMail() {
+            const container = document.getElementById('mailList');
+            if (!container) return;
+
+            try {
+                const response = await this.api('/api/mail');
+                const data = await response.json();
+
+                if (!data.mail || data.mail.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📬</div>
+                            <h3>No Messages from Olympus</h3>
+                            <p>Letters from the gods, cabin invites, and quest updates will appear here.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                const typeEmojis = {
+                    'cabin_invite': '🏕️', 'redemption_result': '📦', 'quest_complete': '📜',
+                    'reward': '💰', 'system': '⚙️', 'god_claiming': '🏛️', 'daily_reward': '🎁',
+                    'event': '🏆', 'delivery_request': '📦', 'delivery_complete': '✅',
+                    'player_message': '💬'
+                };
+
+                container.innerHTML = data.mail.map(mail => `
+                    <div class="mail-item ${mail.is_read ? '' : 'unread'}" onclick="Portal.openMail(${mail.mail_id}, '${Utils.escapeHtml(mail.subject)}', \`${Utils.escapeHtml(mail.content || '')}\`)">
+                        <div class="mail-icon">${typeEmojis[mail.mail_type] || '📬'}</div>
+                        <div class="mail-content">
+                            <div class="mail-subject">${Utils.escapeHtml(mail.subject)}</div>
+                            <div class="mail-preview">${Utils.escapeHtml((mail.content || '').substring(0, 100))}...</div>
+                        </div>
+                        <div class="mail-date">${Utils.formatDate(mail.created_at)}</div>
+                    </div>
+                `).join('');
+
+            } catch (e) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">⚠️</div>
+                        <h3>Cannot Reach Olympus</h3>
+                        <p>Unable to load your mail. Please try again later.</p>
+                    </div>
+                `;
+            }
+        },
+
+        currentMailId: null,
+
+        openMail(mailId, subject, content) {
+            this.currentMailId = mailId;
+            document.getElementById('mailModalTitle').textContent = subject;
+            
+            // Create immersive mail display
+            document.getElementById('mailModalBody').innerHTML = `
+                <div style="background: linear-gradient(145deg, rgba(244, 228, 188, 0.08) 0%, rgba(0,0,0,0.2) 100%); border: 1px solid rgba(212,175,55,0.3); border-radius: 12px; padding: 2rem; font-family: 'EB Garamond', serif; line-height: 2;">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <span style="font-size: 2rem;">📜</span>
+                    </div>
+                    <div style="white-space: pre-wrap; color: var(--parchment);">${content.replace(/\n/g, '<br>')}</div>
+                    <div style="text-align: center; margin-top: 1.5rem; opacity: 0.5;">
+                        <span>— ⚡ —</span>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('mailModal').classList.add('active');
+            document.getElementById('mailDeleteBtn').onclick = () => this.deleteMail(mailId);
+
+            // Mark as read
+            this.api(`/api/mail/read/${mailId}`, { method: 'POST' }).then(() => {
+                this.loadMail();
+                this.loadProfile();
+            });
+        },
+
+        closeMailModal() {
+            document.getElementById('mailModal').classList.remove('active');
+            this.currentMailId = null;
+        },
+
+        async deleteMail(mailId) {
+            try {
+                await this.api(`/api/mail/${mailId}`, { method: 'DELETE' });
+                this.closeMailModal();
+                this.loadMail();
+                this.loadProfile();
+            } catch (e) {
+                console.error('Failed to delete mail:', e);
+            }
+        },
+
+        async loadTimeline() {
+            const container = document.getElementById('timelineList');
+            if (!container) return;
+
+            try {
+                const response = await fetch(CONFIG.API_BASE + '/api/public/timeline?limit=20');
+                const data = await response.json();
+
+                if (!data.entries || data.entries.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📜</div>
+                            <h3>The Chronicle Awaits</h3>
+                            <p>Camp history will be recorded here as legends are made.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                container.innerHTML = `
+                    <div class="timeline" style="position: relative; padding-left: 3rem;">
+                        <div style="position: absolute; left: 10px; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--gold) 0%, var(--bronze) 50%, var(--gold-dark) 100%); border-radius: 2px;"></div>
+                        ${data.entries.map(entry => `
+                            <div class="timeline-entry" style="position: relative; padding: 1.5rem 2rem; background: linear-gradient(145deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%); border: 1px solid rgba(212,175,55,0.15); border-radius: 12px; margin-bottom: 1.5rem; margin-left: 1.5rem;">
+                                <div style="position: absolute; left: -2.75rem; top: 1.5rem; width: 24px; height: 24px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; box-shadow: 0 0 15px rgba(212,175,55,0.5);">⚡</div>
+                                <div style="font-size: 0.85rem; color: var(--gold-dark); margin-bottom: 0.5rem;">${Utils.formatDate(entry.event_date)}</div>
+                                <div style="font-family: 'Cinzel', serif; color: var(--gold-light); font-size: 1.2rem; margin-bottom: 0.5rem;">${Utils.escapeHtml(entry.subject || entry.title || 'Untitled')}</div>
+                                <div style="color: var(--marble-dark);">${Utils.escapeHtml(entry.description || entry.content || '')}</div>
+                                ${entry.category ? `<span style="display: inline-block; background: rgba(79,195,247,0.15); color: var(--zeus-lightning); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; margin-top: 0.75rem;">${Utils.escapeHtml(entry.category)}</span>` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+
+            } catch (e) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">⚠️</div>
+                        <h3>Cannot Access Archives</h3>
+                        <p>Unable to load the timeline. Please try again later.</p>
+                    </div>
+                `;
+            }
+        }
+    };
+
+    // Add mail item styles
+    const mailStyles = document.createElement('style');
+    mailStyles.textContent = `
+        .mail-item {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 1.25rem 1.5rem;
+            background: linear-gradient(145deg, rgba(244, 228, 188, 0.03) 0%, rgba(0, 0, 0, 0.3) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .mail-item:hover {
+            border-color: var(--gold);
+            transform: translateX(5px);
+            background: rgba(212, 175, 55, 0.05);
+        }
+        .mail-item.unread {
+            border-left: 4px solid var(--zeus-lightning);
+            background: linear-gradient(145deg, rgba(79, 195, 247, 0.05) 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+        .mail-icon {
+            font-size: 2rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .mail-content { flex: 1; }
+        .mail-subject {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        .mail-preview {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .mail-date {
+            font-size: 0.8rem;
+            color: var(--gold-dark);
+            white-space: nowrap;
+        }
+        .portal-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+    `;
+    document.head.appendChild(mailStyles);
+
+    // ══════════════════════════════════════════════════════════════════════════════
+    // QUIZZES
+    // ══════════════════════════════════════════════════════════════════════════════
+    const Quizzes = {
+        currentQuiz: null,
+        currentQuestion: 0,
+        answers: [],
+
+        loadList() {
+            const container = document.getElementById('quizzesList');
+            if (!container) return;
+
+            container.innerHTML = QUIZZES.map(quiz => `
+                <div class="feature-card" style="cursor: pointer;" onclick="Quizzes.startQuiz('${quiz.id}')">
+                    <span class="feature-card-icon">${quiz.emoji}</span>
+                    <h4>${quiz.name}</h4>
+                    <p>${quiz.description}</p>
+                </div>
+            `).join('');
+        },
+
+        startQuiz(quizId) {
+            this.currentQuiz = QUIZZES.find(q => q.id === quizId);
+            if (!this.currentQuiz) return;
+
+            this.currentQuestion = 0;
+            this.answers = [];
+            this.showQuestion();
+            document.getElementById('quizModal').classList.add('active');
+        },
+
+        showQuestion() {
+            const q = this.currentQuiz.questions[this.currentQuestion];
+            document.getElementById('quizModalTitle').textContent = `${this.currentQuiz.emoji} ${this.currentQuiz.name}`;
+            
+            document.getElementById('quizModalBody').innerHTML = `
+                <div style="margin-bottom: 1rem; color: var(--gold-dark); font-size: 0.9rem;">
+                    Question ${this.currentQuestion + 1} of ${this.currentQuiz.questions.length}
+                </div>
+                <h3 style="margin-bottom: 1.5rem;">${q.q}</h3>
+                <div class="quiz-options">
+                    ${q.options.map((opt, i) => `
+                        <button class="quiz-option btn btn-secondary" onclick="Quizzes.selectAnswer(${i})" style="display: block; width: 100%; margin-bottom: 0.75rem; text-align: left;">
+                            ${opt.text}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+        },
+
+        selectAnswer(optionIndex) {
+            const q = this.currentQuiz.questions[this.currentQuestion];
+            this.answers.push(q.options[optionIndex].traits);
+
+            this.currentQuestion++;
+            
+            if (this.currentQuestion < this.currentQuiz.questions.length) {
+                this.showQuestion();
+            } else {
+                this.showResults();
+            }
+        },
+
+        showResults() {
+            // Compile traits
+            const traits = {};
+            this.answers.forEach(answer => {
+                Object.entries(answer).forEach(([key, value]) => {
+                    if (typeof value === 'number') {
+                        traits[key] = (traits[key] || 0) + value;
+                    } else {
+                        traits[key] = value;
+                    }
+                });
+            });
+
+            // Generate personalized result
+            let resultHtml = '';
+            
+            if (this.currentQuiz.id === 'demigod_traits') {
+                const topTrait = Object.entries(traits)
+                    .filter(([k, v]) => typeof v === 'number')
+                    .sort((a, b) => b[1] - a[1])[0];
+                
+                resultHtml = `
+                    <div style="text-align: center; padding: 2rem;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">⚡</div>
+                        <h2 style="color: var(--gold); margin-bottom: 1rem;">Your Demigod Profile</h2>
+                        <p style="font-size: 1.2rem; margin-bottom: 2rem;">The Oracle has peered into your soul...</p>
+                        
+                        <div style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold-dark); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem;">
+                            <h3 style="color: var(--gold-light);">Primary Element: ${traits.element ? traits.element.charAt(0).toUpperCase() + traits.element.slice(1) : 'Balanced'}</h3>
+                            <p>Your connection to the elemental forces shapes your powers.</p>
+                        </div>
+                        
+                        <div style="background: rgba(79,195,247,0.1); border: 1px solid var(--zeus-lightning); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem;">
+                            <h3 style="color: var(--zeus-lightning);">Greatest Virtue: ${traits.virtue ? traits.virtue.charAt(0).toUpperCase() + traits.virtue.slice(1) : 'Versatility'}</h3>
+                            <p>This virtue defines your heroic nature.</p>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.5rem;">⚔️</div>
+                                <div style="font-size: 0.9rem; color: var(--text-muted);">Combat</div>
+                                <div style="color: var(--gold);">${traits.combat || traits.warrior || 0}</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.5rem;">🔮</div>
+                                <div style="font-size: 0.9rem; color: var(--text-muted);">Magic</div>
+                                <div style="color: var(--gold);">${traits.magic || traits.strategy || 0}</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.5rem;">❤️</div>
+                                <div style="font-size: 0.9rem; color: var(--text-muted);">Heart</div>
+                                <div style="color: var(--gold);">${traits.empathy || traits.guardian || 0}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (this.currentQuiz.id === 'quest_destiny') {
+                resultHtml = `
+                    <div style="text-align: center; padding: 2rem;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">📜</div>
+                        <h2 style="color: var(--gold); margin-bottom: 1rem;">Your Quest Destiny</h2>
+                        <p style="font-size: 1.2rem; margin-bottom: 2rem;">The threads of fate reveal your path...</p>
+                        
+                        <div style="background: rgba(212,175,55,0.1); border: 1px solid var(--gold-dark); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem;">
+                            <h3 style="color: var(--gold-light);">Quest Type: ${traits.quest ? traits.quest.charAt(0).toUpperCase() + traits.quest.slice(1) : 'Epic'}</h3>
+                            <p>Destiny calls you to ${traits.quest === 'rescue' ? 'save those in peril' : traits.quest === 'retrieval' ? 'recover lost artifacts' : traits.quest === 'combat' ? 'defeat great evils' : 'uncover ancient secrets'}.</p>
+                        </div>
+                        
+                        <div style="background: rgba(79,195,247,0.1); border: 1px solid var(--zeus-lightning); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem;">
+                            <h3 style="color: var(--zeus-lightning);">Your Approach: ${traits.approach ? traits.approach.charAt(0).toUpperCase() + traits.approach.slice(1) : 'Adaptive'}</h3>
+                            <p>You favor ${traits.approach === 'diplomatic' ? 'negotiation and wisdom' : traits.approach === 'stealth' ? 'subtlety and cunning' : traits.approach === 'combat' ? 'direct confrontation' : 'unconventional solutions'}.</p>
+                        </div>
+                        
+                        <div style="background: rgba(139,0,139,0.1); border: 1px solid var(--hades-purple); border-radius: 12px; padding: 1.5rem;">
+                            <h3 style="color: var(--hades-purple);">Ultimate Goal: ${traits.goal ? traits.goal.charAt(0).toUpperCase() + traits.goal.slice(1) : 'Destiny'}</h3>
+                            <p>Your heart seeks ${traits.goal === 'glory' ? 'recognition and honor' : traits.goal === 'growth' ? 'wisdom and strength' : traits.goal === 'help' ? 'to protect others' : 'self-discovery'}.</p>
+                        </div>
+                    </div>
+                `;
+            } else if (this.currentQuiz.id === 'mythical_creature') {
+                // Determine creature based on traits
+                let creature = 'Phoenix';
+                let creatureEmoji = '🔥';
+                let creatureDesc = 'The eternal Phoenix, reborn from ashes. Your spirit is undying.';
+
+                if (traits.habitat === 'mountains' && traits.role === 'guardian') {
+                    creature = 'Griffin'; creatureEmoji = '🦅';
+                    creatureDesc = 'The noble Griffin, part eagle and part lion, guards treasures and represents courage and leadership.';
+                } else if (traits.habitat === 'ocean') {
+                    creature = 'Hippocampus'; creatureEmoji = '🐴';
+                    creatureDesc = 'The mighty Hippocampus, horse of the sea. You bridge two worlds with strength and grace.';
+                } else if (traits.time === 'night' && traits.defense === 'fight') {
+                    creature = 'Hellhound'; creatureEmoji = '🐕';
+                    creatureDesc = 'A Hellhound, swift shadow hunter of the Underworld. Fierce and loyal beyond measure.';
+                } else if (traits.strength === 'mind') {
+                    creature = 'Sphinx'; creatureEmoji = '🦁';
+                    creatureDesc = 'The wise Sphinx, keeper of riddles and ancient knowledge. Your mind is your greatest weapon.';
+                } else if (traits.defense === 'flight' || traits.role === 'messenger') {
+                    creature = 'Pegasus'; creatureEmoji = '🦄';
+                    creatureDesc = 'The legendary Pegasus, winged horse of heroes. Freedom and inspiration flow through you.';
+                } else if (traits.habitat === 'extreme' || traits.time === 'storm') {
+                    creature = 'Dragon'; creatureEmoji = '🐉';
+                    creatureDesc = 'An ancient Dragon, wise and powerful. You guard what matters most with fierce devotion.';
+                }
+
+                resultHtml = `
+                    <div style="text-align: center; padding: 2rem;">
+                        <div style="font-size: 5rem; margin-bottom: 1rem;">${creatureEmoji}</div>
+                        <h2 style="color: var(--gold); margin-bottom: 0.5rem;">Your Spirit Creature</h2>
+                        <h3 style="color: var(--zeus-lightning); font-size: 1.8rem; margin-bottom: 1rem;">${creature}</h3>
+                        <p style="font-size: 1.1rem; max-width: 500px; margin: 0 auto;">${creatureDesc}</p>
+                        
+                        <div style="margin-top: 2rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
+                            <div style="background: rgba(212,175,55,0.1); border-radius: 8px; padding: 1rem;">
+                                <div style="font-size: 0.9rem; color: var(--gold-dark);">Preferred Time</div>
+                                <div style="color: var(--gold);">${traits.time ? traits.time.charAt(0).toUpperCase() + traits.time.slice(1) : 'Any'}</div>
+                            </div>
+                            <div style="background: rgba(212,175,55,0.1); border-radius: 8px; padding: 1rem;">
+                                <div style="font-size: 0.9rem; color: var(--gold-dark);">Habitat</div>
+                                <div style="color: var(--gold);">${traits.habitat ? traits.habitat.charAt(0).toUpperCase() + traits.habitat.slice(1) : 'Everywhere'}</div>
+                            </div>
+                            <div style="background: rgba(212,175,55,0.1); border-radius: 8px; padding: 1rem;">
+                                <div style="font-size: 0.9rem; color: var(--gold-dark);">Greatest Strength</div>
+                                <div style="color: var(--gold);">${traits.strength ? traits.strength.charAt(0).toUpperCase() + traits.strength.slice(1) : 'Balance'}</div>
+                            </div>
+                            <div style="background: rgba(212,175,55,0.1); border-radius: 8px; padding: 1rem;">
+                                <div style="font-size: 0.9rem; color: var(--gold-dark);">Destined Role</div>
+                                <div style="color: var(--gold);">${traits.role ? traits.role.charAt(0).toUpperCase() + traits.role.slice(1) : 'Hero'}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            document.getElementById('quizModalBody').innerHTML = resultHtml + `
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn btn-primary" onclick="Quizzes.closeQuiz()">Complete</button>
+                </div>
+            `;
+        },
+
+        closeQuiz() {
+            document.getElementById('quizModal').classList.remove('active');
+            this.currentQuiz = null;
+            this.currentQuestion = 0;
+            this.answers = [];
+        }
+    };
+
+    // ══════════════════════════════════════════════════════════════════════════════
+    // PAGE CONTENT GENERATORS
+    // ══════════════════════════════════════════════════════════════════════════════
+    function populateGods() {
+        const container = document.getElementById('gods-grid');
+        if (!container) return;
+
+        container.innerHTML = Object.entries(GODS).map(([name, info]) => `
+            <div class="feature-card" style="cursor: default;">
+                <span class="feature-card-icon" style="filter: ${info.color.startsWith('linear') ? 'none' : `drop-shadow(0 0 10px ${info.color})`};">${info.emoji}</span>
+                <h4 style="color: ${info.color.startsWith('linear') ? 'var(--gold)' : info.color};">${name}</h4>
+                <p style="font-style: italic; color: var(--gold-dark); margin-bottom: 0.5rem;">${info.domain}</p>
+                <p>${info.description}</p>
+            </div>
+        `).join('');
+    }
+
+    function populateGames() {
+        const container = document.getElementById('games-grid');
+        if (!container) return;
+
+        container.innerHTML = GAMES.map(game => `
+            <div class="feature-card" style="background: linear-gradient(145deg, rgba(79, 195, 247, 0.05) 0%, rgba(0, 0, 0, 0.4) 100%); border-color: rgba(79, 195, 247, 0.2);">
+                <span class="feature-card-icon">${game.emoji}</span>
+                <h4 style="color: var(--zeus-lightning);">${game.name}</h4>
+                <p>${game.desc}</p>
+                <div style="margin-top: 0.75rem;">
+                    <span style="display: inline-block; background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0.1) 100%); color: var(--gold); padding: 0.5rem 1rem; border-radius: 25px; font-size: 0.9rem; border: 1px solid rgba(212, 175, 55, 0.3);">
+                        Reward: ${game.reward}
+                    </span>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // ══════════════════════════════════════════════════════════════════════════════
+    // INITIALIZATION
+    // ══════════════════════════════════════════════════════════════════════════════
+    document.addEventListener('DOMContentLoaded', () => {
+        Cosmos.init();
+        Nav.init();
+        Portal.init();
+        populateGods();
+        populateGames();
+    });
+    </script>
+</body>
+</html>

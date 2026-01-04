@@ -1,0 +1,11 @@
+# Camp Half-Blood Web Portal - Dependencies
+# For Railway/Render/Heroku deployment
+
+# Web server
+aiohttp>=3.8.0
+
+# Database
+mysql-connector-python>=8.0.0
+
+# Optional: If you want to use environment variables from .env file
+python-dotenv>=1.0.0
